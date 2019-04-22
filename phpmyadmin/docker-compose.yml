@@ -1,0 +1,10 @@
+version: "2"  
+services:    
+  phpmyadmin:  
+    image: szc10/phpmyadmin  
+    ports:  
+      - "8080:80"  
+    restart: always
+    volumes:  
+      - ./config/config.default.php:/var/www/html/libraries/config.default.php 
+      # - /etc/localtime:/etc/localtime

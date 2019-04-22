@@ -1,0 +1,6 @@
+################################################################################
+# builder
+################################################################################
+FROM szc10/apache-php
+RUN curl -O https://files.phpmyadmin.net/phpMyAdmin/4.8.5/phpMyAdmin-4.8.5-all-languages.tar.gz
+RUN tar -xvf phpMyAdmin-4.8.5-all-languages.tar.gz -C /var/www/  && cd /var/www && rm -R html && mv phpMyAdmin-* html
