@@ -1,0 +1,12 @@
+################################################################################
+# builder
+################################################################################
+FROM node:6.11.2 as system
+COPY sources.list /etc/apt/sources.list
+# build node
+COPY web /src/web
+RUN cd /src/web \
+    && npm i
+EXPOSE 3001
+WORKDIR /src/web
+CMD [ "node", "index.js" ]    

@@ -1,0 +1,14 @@
+################################################################################
+# builder
+################################################################################
+FROM ubuntu:18.04
+COPY ./sources.list /etc/apt/sources.list
+RUN apt-get update && apt-get install wget sysstat -y
+RUN cd /opt && \  
+  wget https://nodejs.org/dist/latest-v6.x/node-v6.17.0-linux-x64.tar.gz && \  
+  tar -xzf node-v6.17.0-linux-x64.tar.gz && \  
+  mv node-v6.17.0-linux-x64 node && \  
+  cd /usr/local/bin && \  
+  ln -s /opt/node/bin/* . && \  
+  rm -f /opt/node-v6.17.0-linux-x64.tar.gz
+CMD [ "node"]    
