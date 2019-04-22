@@ -1,0 +1,17 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:1.15.6
+    container_name: nginx-name
+    volumes:
+      - ./nginx:/etc/nginx
+      - ./log:/var/log/nginx
+      # - /etc/hosts:/etc/hosts
+      # - /etc/localtime:/etc/localtime
+    expose:
+      - 80
+      - 443
+    ports:
+      - 8090:80
+      - 4431:443
+    restart: always   
