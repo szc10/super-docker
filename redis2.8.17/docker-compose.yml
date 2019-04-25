@@ -3,6 +3,8 @@ services:
    redis:
       image: redis:2.8.17
       container_name: redis
+      volumes: 
+      - ./data:/data
       restart: always   # 如果容器出现异常，则自动重启
       ports:
          - 6379:6379
