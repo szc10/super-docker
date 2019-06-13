@@ -1,0 +1,16 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkinsci/blueocean:1.17.0
+    container_name: blueocean
+    restart: always
+    privileged: true
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - ./home:/home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/hosts:/etc/hosts
+      - ./jenkins_home:/var/jenkins_home
+      - /etc/localtime:/etc/localtime
