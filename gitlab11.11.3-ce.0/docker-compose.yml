@@ -1,0 +1,13 @@
+version: '2'
+services:
+  gitlab:
+    hostname: localhost
+    image: gitlab/gitlab-ce:11.11.3-ce.0
+    restart: always
+    volumes:
+      - ./config:/etc/gitlab 
+      - ./logs:/var/log/gitlab
+      - ./data:/var/opt/gitlab 
+    ports:
+      - 20001:443 
+      - 20002:80
