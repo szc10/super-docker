@@ -1,0 +1,11 @@
+FROM ubuntu:18.04
+MAINTAINER <Lemon shi : sh081042@gmail.com>
+# ADD sources.list /etc/apt/sources.list
+# Installs necesseary packages
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:ethereum/ethereum && \
+    apt-get update && \
+    apt-get -y install ethereum
+    # geth version
+CMD ["geth", "version"]
