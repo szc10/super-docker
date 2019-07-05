@@ -8,4 +8,4 @@ services:
       restart: always   # 如果容器出现异常，则自动重启
       ports:
          - 6379:6379
-      command: redis-server --requirepass redispassword  # redis 设置的密码 
+      command: redis-server --requirepass redispassword  # redis 设置的密码 持久化 redis-server --appendonly yes
