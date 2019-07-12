@@ -1,0 +1,17 @@
+version: '3'
+services:
+  geth:
+    image: szc10/geth
+    container_name: geth
+    restart: always
+    tty: true
+    ports:
+      - 8545:8545
+    volumes:
+      - /etc/hosts:/etc/hosts
+      - /etc/localtime:/etc/localtime
+    command:
+      - /bin/bash
+      - -c
+      - geth --rpc --rpcaddr 0.0.0.0 --rpcport "8545" --syncmode "light" --rpcapi eth,web3,admin,personal,net
+                            
