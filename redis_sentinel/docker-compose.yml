@@ -1,0 +1,34 @@
+version: '2'
+services:
+  redis_master:
+    container_name: redis-master
+    image: redis:4.0.2-alpine
+    volumes: 
+      - ./redis/data:/data
+    ports:
+      - "6379:6379"
+  redis_slave:
+    container_name: redis-slave
+    volumes: 
+      - ./redis/slave:/data
+    image: redis:4.0.2-alpine
+    ports:
+      - "16380:6379"
+  redis_sentinel:
+    container_name: redis-sentinel
+    build: redis
+    image: redis-sentinel
+    environment:
+      - MASTER_NAME=mymaster
+      - QUORUM=1
+      - MASTER=redis_master
+      - SLAVES=redis_slave
+    depends_on:
+      - redis_master
+      - redis_slave
+    ports:
+      - "26379:26379"
+# networks:
+#   default : 
+#     external:
+#       name: exc_net     
