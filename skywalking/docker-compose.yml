@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  oap-ui:
+    image: apache/skywalking-ui
+    restart: always
+    ports:
+      - 8091:8080
+    depends_on:
+        - oap  
+    environment:
+        SW_OAP_ADDRESS: oap:12800
+  oap:
+    image: apache/skywalking-oap-server
+    restart: always
+    ports:
+      - 12800:12800
+      - 11800:11800
+      - 1234:1234
